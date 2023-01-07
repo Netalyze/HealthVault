@@ -1,0 +1,46 @@
+name: Tests
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  unit-tests:
+    name: Unit tests on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+    steps:
+    - name: Checkout to repository
+      uses: actions/checkout@v3
+
+    - name: Clone flutter repository with channel stable
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: "3.3.10"
+        channel: stable
+        cache: true
+    - run: flutter doctor
+
+    - name: Get dependencies
+      run: flutter pub get
+
+    - name: Analyze
+      run: flutter analyze
+
+    - name: Check formatting
+      run: flutter format --set-exit-if-changed --dry-run .
+
+    - name: Run unit tests
+      run: flutter test
+#
+#    - name: Upload code coverage
+#      if: github.ref == 'refs/heads/main'
+#      uses: codecov/codecov-action@v3
+#      with:
+#        token: ${{ secrets.CODECOV_TOKEN }}
+#        file: coverage/lcov.info

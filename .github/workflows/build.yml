@@ -1,0 +1,29 @@
+name: Build
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build ${{ matrix.target }}
+    runs-on: ubuntu-latest
+#    runs-on: macos-latest   Switch to macos-latest if in matrix-target is any Apple OS
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [web]
+    steps:
+      - name: Checkout to repository
+        uses: actions/checkout@v3
+
+      - name: Clone flutter repository with channel stable
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Build for ${{ matrix.target }}
+        run: flutter build ${{ matrix.target }}
