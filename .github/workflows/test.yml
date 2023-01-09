@@ -41,6 +41,5 @@ jobs:
     - name: Upload code coverage
       uses: codecov/codecov-action@v3
       with:
-        directory: ./coverage/reports/
-        files: ./coverage.xml
+        token: ${{ secrets.CODECOV_TOKEN }}
         flags: unittests
