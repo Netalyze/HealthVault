@@ -4,11 +4,12 @@ on:
     branches:
       - main
 
+  workflow_dispatch:
+
 jobs:
   build:
     name: Build ${{ matrix.target }}
     runs-on: ubuntu-latest
-#    runs-on: macos-latest   Switch to macos-latest if in matrix-target is any Apple OS
     strategy:
       fail-fast: false
       matrix:
@@ -21,6 +22,7 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: stable
+      - run: flutter doctor -v
 
       - name: Get dependencies
         run: flutter pub get
