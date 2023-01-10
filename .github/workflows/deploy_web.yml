@@ -30,3 +30,4 @@ jobs:
       - run: firebase deploy --only hosting
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          PROJECT_ID: ${{ secrets.PROJECT_ID }}
