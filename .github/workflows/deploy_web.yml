@@ -18,6 +18,12 @@ jobs:
       - name: Get dependencies
         run: flutter pub get
 
+      - name: Install firebase
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm install -g firebase-tools
+
       - name: Build web
         run: flutter build web --release
 
