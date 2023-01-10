@@ -1,0 +1,26 @@
+name: Deploy web
+on: workflow_dispatch
+
+jobs:
+  deploy-web:
+    name: Deploy web
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout to repository
+        uses: actions/checkout@v3
+
+      - name: Clone flutter repository with channel stable
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+      - run: flutter doctor -v
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Build web
+        run: flutter build web --release
+
+      - run: firebase deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
