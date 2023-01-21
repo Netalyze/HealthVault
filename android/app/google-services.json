@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "919591073641",
+    "project_id": "healthvault-6af37",
+    "storage_bucket": "healthvault-6af37.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:919591073641:android:6bbfe6c2c644623a4caff8",
+        "android_client_info": {
+          "package_name": "com.example.health_vault"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "919591073641-747ijajeod7n8dpndt9sur31g9h09bto.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqLDuGgC7ln2i37FDt6-Zgiv9KrH3_Syg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "919591073641-747ijajeod7n8dpndt9sur31g9h09bto.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "919591073641-dueuu1uortre6geqviac9a31j2ukgian.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.healthVault"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
